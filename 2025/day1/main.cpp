@@ -16,12 +16,11 @@ vector<string> readLines(string filename) {
 }
 
 int dial(int point, string rotation) {
-    string direction = rotation.substr(0, 1);
     int norm = stoi(rotation.substr(1));
-    int sign = (direction == "R") ? 1 : -1;
+    int signedNorm = (rotation[0] == 'R') ? norm : -norm;
+    point += signedNorm;
     
-    int temp = point + (sign * norm);
-    int result = ((temp % 100) + 100) % 100;
+    int result = ((point % 100) + 100) % 100;
     return result;
 }
 
